@@ -14,6 +14,9 @@ use Illuminate\Support\Str;
 use Laravel\Fortify\Contracts\LoginResponse;
 use Laravel\Fortify\Contracts\RegisterResponse;
 use Laravel\Fortify\Fortify;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Laravel\Fortify\Contracts\LogoutResponse;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -34,9 +37,21 @@ class FortifyServiceProvider extends ServiceProvider
         $this->app->instance(LoginResponse::class , new class implements LoginResponse{
             public function toResponse($request)
             {
+                $token = $request->user()->createToken('auth_token');
+
                 return response()->json([
                     "message" => "Logged in Successfully",
-                    "name" => $request->input('email')
+                    "name" => $request->input('email'),
+                    "token" => $token->plainTextToken
+                ], 200 );
+            }
+        });
+        $this->app->instance(LogoutResponse::class , new class implements LogoutResponse{
+            public function toResponse($request)
+            {
+
+                return response()->json([
+                    "message" => "Logged out Successfully",
                 ], 200 );
             }
         });
@@ -52,6 +67,19 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
+
+        // Fortify::verifyEmailView(function () {
+        //     return redirect('http://localhost:5173/email-verification');
+        // });
+
+        Fortify::authenticateUsing(function (Request $request) {
+            $user = User::where('email', $request->email)->first();
+
+            if ($user &&
+                Hash::check($request->password, $user->password)) {
+                return $user;
+            }
+        });
 
         RateLimiter::for('login', function (Request $request) {
             $throttleKey = Str::transliterate(Str::lower($request->input(Fortify::username())).'|'.$request->ip());
