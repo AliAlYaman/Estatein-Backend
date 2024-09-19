@@ -17,7 +17,7 @@ class PropertyFactory extends Factory
     public function definition(): array
     {
         return [
-            'image' => $this->faker->randomElement(['src/assets/cards/hotel.png' , 'src/assets/cards/hotel-2.png' , 'src/assets/cards/hotel-3.png']),
+            'image' => $this->faker->randomElement(['assets/cards/hotel.png' , 'assets/cards/hotel-2.png' , 'assets/cards/hotel-3.png']),
             'title' => $this->faker->randomElement(['Luxury Villa' , 'Modern Apartment']),
             'subtitle'=> $this->faker->randomElement(['A stunning 4-bedroom, 3-bathroom villa in a peaceful suburban neighborhood' , "A chic and fully-furnished 2-bedroom apartment with panoramic city views", 'An elegant 3-bedroom, 2.5-bathroom townhouse in a gated community']),
             'bedroom' => $this->faker->randomElement(['1-bedroom' , '3-bedroom' , '4-bedroom' ,'6-bedroom' , '8-bedroom']),

@@ -19,7 +19,7 @@ return [
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['http://localhost:5173'],
+    'allowed_origins' => ['http://localhost:5173' , 'https://estatein-frontend-j4ws7gm1u-alialyamans-projects.vercel.app'],
 
     'allowed_origins_patterns' => [],
 
