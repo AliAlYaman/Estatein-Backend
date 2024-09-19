@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\V1_0\PropertyController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,8 @@ Route::post('/login' , [AuthenticatedSessionController::class, 'store']);
 
 Route::post('/logout' , [AuthenticatedSessionController::class, 'destroy']);
 
+Route::get('/properties' , [PropertyController::class, 'index']);
+
 Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
     ->middleware(['throttle:6,1']) // Optional middleware to throttle requests
     ->name('verification.send');
@@ -26,3 +29,5 @@ Route::post('email/verification-notification', [EmailVerificationNotificationCon
 
         return response()->json(['success' => true, 'message' => 'Email Verified Successfully']);
     })->middleware(['auth', 'signed'])->name('verification.verify');
+
+
