@@ -17,6 +17,10 @@ use Laravel\Fortify\Fortify;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Fortify\Contracts\LogoutResponse;
+use Laravel\Fortify\Contracts\PasswordResetResponse;
+use Laravel\Fortify\Contracts\ResetPasswordViewResponse;
+use App\Notifications\ResetPasswordNotification;
+use Illuminate\Auth\Notifications\ResetPassword;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -55,6 +59,8 @@ class FortifyServiceProvider extends ServiceProvider
                 ], 200 );
             }
         });
+
+
     }
 
     /**
@@ -62,11 +68,12 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Fortify::ignoreRoutes();
+        // Fortify::ignoreRoutes();
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
         Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
+
 
         // Fortify::verifyEmailView(function () {
         //     return redirect('http://localhost:5173/email-verification');
