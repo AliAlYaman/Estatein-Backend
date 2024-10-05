@@ -22,8 +22,11 @@ class PropertyFactory extends Factory
             'subtitle'=> $this->faker->randomElement(['A stunning 4-bedroom, 3-bathroom villa in a peaceful suburban neighborhood' , "A chic and fully-furnished 2-bedroom apartment with panoramic city views", 'An elegant 3-bedroom, 2.5-bathroom townhouse in a gated community']),
             'bedroom' => $this->faker->randomElement(['1-bedroom' , '3-bedroom' , '4-bedroom' ,'6-bedroom' , '8-bedroom']),
             'bathroom' => $this->faker->randomElement(['1-bathroom' , '3-bathroom' , '4-bathroom' ,'6-bathroom' , '8-bathroom']),
-            'type' => 'Villa',
-            'price' => '$750,000'
+            'type' => $this->faker->randomElement(['House' , 'Apartment' , 'Condo' , 'Townhouse']),
+            'location' => $this->faker->randomElement(['New York' , 'Los Angeles' , 'Chicago' , 'Huston']) ,
+            'price' => '$750,000',
+            'size' => $this->faker->randomElement([ '1000' , '2000' ,'3000' , '4000' , '5000']),
+            'build_year' => $this->faker->randomElement(['2010' , '2020' , '2000' ,'1990' , '2030'])
         ];
     }
 }
