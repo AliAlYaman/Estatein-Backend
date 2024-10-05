@@ -34,6 +34,7 @@ Route::get('/reset-password', function (Request $request) {
 })->name('password.view');
 
 Route::get('/properties' , [PropertyController::class, 'index']);
+Route::post('/search-properties' , [PropertyController::class, 'filter']);
 
 Route::post('email/verification-notification', [EmailVerificationNotificationController::class, 'store'])
     ->middleware(['throttle:6,1']) // Optional middleware to throttle requests
