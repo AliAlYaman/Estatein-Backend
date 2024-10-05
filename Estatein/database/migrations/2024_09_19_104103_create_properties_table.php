@@ -18,8 +18,11 @@ return new class extends Migration
             $table->string('subtitle');
             $table->string('bedroom');
             $table->string('bathroom');
+            $table->string('location');
+            $table->string('size');
             $table->string('type');
             $table->string('price');
+            $table->string('build_year');
             $table->timestamps();
         });
     }
