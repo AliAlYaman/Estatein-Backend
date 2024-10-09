@@ -5,11 +5,22 @@ namespace App\Http\Controllers\Api\V1_0;
 use App\Http\Controllers\Controller;
 use App\Models\Property;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class PropertyController extends Controller
 {
-    public function index(){
-        return response()->json(Property::all());
+    public function index()
+    {
+        // Define a cache key to store the properties
+        $cacheKey = 'properties';
+
+        // Check if the properties are already cached
+        $properties = Cache::remember($cacheKey, 600, function () {
+            // If not cached, retrieve from the database and cache it for 600 seconds (10 minutes)
+            return Property::all();
+        });
+
+        return response()->json($properties);
     }
 
     public function filter(Request $request)
