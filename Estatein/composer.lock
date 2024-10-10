@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "275a02fb6a4f0efea73587d2579ef6dd",
+=======
+    "content-hash": "f1b7e2bcd4404e4cff6189be9243ff0f",
+>>>>>>> 37567e5f2ba2d699ed148ee847b0bd2074eef3de
     "packages": [
         {
             "name": "arcanedev/log-viewer",
@@ -2956,6 +2960,7 @@
         },
         {
             "name": "predis/predis",
+<<<<<<< HEAD
             "version": "v2.0.0",
             "source": {
                 "type": "git",
@@ -2966,12 +2971,25 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/predis/predis/zipball/99c253733dee9447d26257dc669d33d5ac84713d",
                 "reference": "99c253733dee9447d26257dc669d33d5ac84713d",
+=======
+            "version": "v2.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/predis/predis.git",
+                "reference": "b1d3255ed9ad4d7254f9f9bba386c99f4bb983d1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/predis/predis/zipball/b1d3255ed9ad4d7254f9f9bba386c99f4bb983d1",
+                "reference": "b1d3255ed9ad4d7254f9f9bba386c99f4bb983d1",
+>>>>>>> 37567e5f2ba2d699ed148ee847b0bd2074eef3de
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2 || ^8.0"
             },
             "require-dev": {
+<<<<<<< HEAD
                 "phpunit/phpunit": "^8.0 || ~9.4.4"
             },
             "suggest": {
@@ -2984,6 +3002,16 @@
                     "dev-main": "2.0-dev"
                 }
             },
+=======
+                "friendsofphp/php-cs-fixer": "^3.3",
+                "phpstan/phpstan": "^1.9",
+                "phpunit/phpunit": "^8.0 || ~9.4.4"
+            },
+            "suggest": {
+                "ext-relay": "Faster connection with in-memory caching (>=0.6.2)"
+            },
+            "type": "library",
+>>>>>>> 37567e5f2ba2d699ed148ee847b0bd2074eef3de
             "autoload": {
                 "psr-4": {
                     "Predis\\": "src/"
@@ -2995,12 +3023,15 @@
             ],
             "authors": [
                 {
+<<<<<<< HEAD
                     "name": "Daniele Alessandri",
                     "email": "suppakilla@gmail.com",
                     "homepage": "http://clorophilla.net",
                     "role": "Creator & Maintainer"
                 },
                 {
+=======
+>>>>>>> 37567e5f2ba2d699ed148ee847b0bd2074eef3de
                     "name": "Till Krüss",
                     "homepage": "https://till.im",
                     "role": "Maintainer"
@@ -3015,7 +3046,11 @@
             ],
             "support": {
                 "issues": "https://github.com/predis/predis/issues",
+<<<<<<< HEAD
                 "source": "https://github.com/predis/predis/tree/v2.0.0"
+=======
+                "source": "https://github.com/predis/predis/tree/v2.2.2"
+>>>>>>> 37567e5f2ba2d699ed148ee847b0bd2074eef3de
             },
             "funding": [
                 {
@@ -3023,7 +3058,11 @@
                     "type": "github"
                 }
             ],
+<<<<<<< HEAD
             "time": "2022-06-08T13:14:56+00:00"
+=======
+            "time": "2023-09-13T16:42:03+00:00"
+>>>>>>> 37567e5f2ba2d699ed148ee847b0bd2074eef3de
         },
         {
             "name": "psr/clock",

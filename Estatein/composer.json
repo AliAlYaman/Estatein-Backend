@@ -10,9 +10,14 @@
         "laravel/fortify": "^1.24",
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
+<<<<<<< HEAD
         "laravel/telescope": "^5.2",
         "laravel/tinker": "^2.9",
         "predis/predis": "2.0"
+=======
+        "laravel/tinker": "^2.9",
+        "predis/predis": "^2.2"
+>>>>>>> 37567e5f2ba2d699ed148ee847b0bd2074eef3de
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

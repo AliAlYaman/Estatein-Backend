@@ -6,26 +6,22 @@ use App\Http\Controllers\Controller;
 use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Log;
 
 class PropertyController extends Controller
 {
     public function index()
     {
+        // Define a cache key to store the properties
         $cacheKey = 'properties';
 
-        $properties = Cache::store('redis')->remember($cacheKey, 600, function () {
-            Log::info('Cache miss - fetching from database');
+        // Check if the properties are already cached
+        $properties = Cache::remember($cacheKey, 600, function () {
+            // If not cached, retrieve from the database and cache it for 600 seconds (10 minutes)
             return Property::all();
         });
 
-        if (Cache::store('redis')->has($cacheKey)) {
-            Log::info('Cache hit - data retrieved from Redis');
-        }
-
         return response()->json($properties);
     }
-
 
     public function filter(Request $request)
     {
