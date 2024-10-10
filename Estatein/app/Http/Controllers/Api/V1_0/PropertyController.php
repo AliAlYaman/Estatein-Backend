@@ -5,12 +5,27 @@ namespace App\Http\Controllers\Api\V1_0;
 use App\Http\Controllers\Controller;
 use App\Models\Property;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 class PropertyController extends Controller
 {
-    public function index(){
-        return response()->json(Property::all());
+    public function index()
+    {
+        $cacheKey = 'properties';
+
+        $properties = Cache::store('redis')->remember($cacheKey, 600, function () {
+            Log::info('Cache miss - fetching from database');
+            return Property::all();
+        });
+
+        if (Cache::store('redis')->has($cacheKey)) {
+            Log::info('Cache hit - data retrieved from Redis');
+        }
+
+        return response()->json($properties);
     }
+
 
     public function filter(Request $request)
     {
